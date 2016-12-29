@@ -6,34 +6,32 @@
     <a class="button" :class="{'is-disabled':params.current_page == params.last_page}" 
       @click="$emit('clicked',params.current_page + 1)"
     >下一页</a>
-    <span v-for="page in params.last_page">
+
+    <span v-if="params.current_page != 1 && params.last_page > 5 && params.current_page > 2">
+      <a class="button" :class="{'is-primary':params.current_page==1}" @click="$emit('clicked',1)">1</a>
+    </span>
+    <span v-if="params.last_page > 5 && params.current_page != 1 && params.current_page-1 > 2">...</span>
+
+    <span v-if="params.current_page > 1 && params.last_page > 5 ">
+      <a class="button" @click="$emit('clicked',params.current_page-1)">{{params.current_page-1}}</a>
+    </span>
+
+    <span v-if="params.last_page > 5">
+      <a class="button" :class="{'is-primary':params.current_page}" @click="$emit('clicked',params.current_page)">{{params.current_page}}</a>
+    </span>
+    <span v-if="params.current_page < params.last_page && params.last_page > 5 && params.current_page < params.last_page - 1">
+      <a class="button" @click="$emit('clicked',params.current_page+1)">{{params.current_page+1}}</a>
+    </span>
+    <span v-if="params.current_page < params.last_page && params.current_page < params.last_page && params.last_page > 5 && params.current_page < params.last_page - 2">...</span>
+    <span v-if="params.current_page < params.last_page && params.last_page > 5">
+      <a class="button" :class="{'is-primary':params.current_page==params.last_page}" @click="$emit('clicked',params.last_page)">{{params.last_page}}</a>
+    </span>
+
+    <span v-if="params.last_page <= 5" v-for="page in params.last_page">
       <a class="button" :class="{'is-primary':params.current_page==page}"
        @click="$emit('clicked',page)"
       >{{page}}</a>
     </span>
-    <!-- <ul>
-      <li>
-        <a class="button">1</a>
-      </li>
-      <li>
-        <span>...</span>
-      </li>
-      <li>
-        <a class="button">45</a>
-      </li>
-      <li>
-        <a class="button is-primary">46</a>
-      </li>
-      <li>
-        <a class="button">47</a>
-      </li>
-      <li>
-        <span>...</span>
-      </li>
-      <li>
-        <a class="button">86</a>
-      </li>
-    </ul> -->
   </nav>
 </template>
 

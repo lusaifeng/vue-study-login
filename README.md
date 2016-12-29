@@ -25,3 +25,9 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## info
+
+本项目使用了如下技术：Vue,vue-router,vue-resourse,bulma,localStorage等
+
+项目包含如下功能：login,register,pagination,tasks等
